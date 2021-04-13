@@ -8,6 +8,7 @@ python-dotenv
 pgeocode
 pandas
 requests
+flask
 sendgrid==6.6.0
 
 #

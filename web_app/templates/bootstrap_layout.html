@@ -38,7 +38,8 @@
     -->
     {% set nav_links = [
       ('/about', 'about', 'About'),
-      ('/hello', 'hello', 'Hello')
+      ('/hello', 'hello', 'Hello'),
+      ('/weather_form', 'weather_form', 'Weather')
     ] -%}
     {% set active_page = active_page|default('home') -%}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -80,7 +81,7 @@
         <footer style="margin-top:2em; margin-bottom:2em;">
         <hr>
             &copy; Copyright 2021 Carlo Dwek |
-            <a href="https://github.com/carlodwek">source</a>
+            <a href="https://github.com/carlodwek/daily-briefings-py">source</a>
         </footer>
     </div>
 

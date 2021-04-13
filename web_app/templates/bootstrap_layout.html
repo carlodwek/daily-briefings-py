@@ -39,10 +39,11 @@
     {% set nav_links = [
       ('/about', 'about', 'About'),
       ('/hello', 'hello', 'Hello'),
-      ('/weather/form', 'weather/form', 'Weather')
+      ('/weather/form', 'weather/form', 'Weather'),
+      ('/cv', 'cv', 'Resume')
     ] -%}
     {% set active_page = active_page|default('home') -%}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Carlo's Website</a>
 

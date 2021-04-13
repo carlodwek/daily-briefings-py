@@ -13,6 +13,11 @@ def about():
     print("ABOUT...")
     return render_template("about.html")
 
+@home_routes.route("/cv")
+def cv():
+    print("CV...")
+    return render_template("cv.html")
+
 @home_routes.route("/hello")
 def hello_world():
     print("HELLO...", dict(request.args))

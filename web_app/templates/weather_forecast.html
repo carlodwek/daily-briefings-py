@@ -1,7 +1,23 @@
+
 {% extends "bootstrap_layout.html" %}
 {% set active_page = "weather_forecast" %}
 
 {% block content %}
+
+<style>
+  table, th, td: {
+    border: 1px solid black;
+  }
+  th: {
+    padding: 15px;
+    text-allign: center;
+    border-spacing: 5px;
+  }
+  td: {
+    padding: 15px;
+    border-spacing: 5px;
+  }
+</style>
 
     <h2>Weather Forecast for {{ results["city_name"] }}</h2>
 
@@ -9,10 +25,18 @@
 
     <!-- TODO: consider using a table instead of a list -->
     <!-- TODO: consider adding images using the provided icon urls -->
-    <ul>
-    {% for forecast in results["hourly_forecasts"] %}
-        <li>{{ forecast["timestamp"] }} | {{ forecast["temp"] }} | {{ forecast["conditions"].upper() }}</li>
-    {% endfor %}
-    </ul>
-
+    <table style="width:100%">
+      <tr>
+        <th>Time</th>
+        <th>Temprature</th>
+        <th>Conditions</th>
+      </tr>
+      {% for forecast in results["hourly_forecasts"] %}
+          <tr>
+            <td>{{ forecast["timestamp"] }}</td>
+            <td>{{ forecast["temp"] }}</td>
+            <td>{{ forecast["conditions"].upper() }}</td>
+          </tr>
+      {% endfor %}
+    <table>
 {% endblock %}

@@ -4,20 +4,7 @@
 
 {% block content %}
 
-<style>
-  table, th, td: {
-    border: 1px solid black;
-  }
-  th: {
-    padding: 15px;
-    text-allign: center;
-    border-spacing: 5px;
-  }
-  td: {
-    padding: 15px;
-    border-spacing: 5px;
-  }
-</style>
+
 
     <h2>Weather Forecast for {{ results["city_name"] }}</h2>
 
@@ -26,16 +13,18 @@
     <!-- TODO: consider using a table instead of a list -->
     <!-- TODO: consider adding images using the provided icon urls -->
     <table style="width:100%">
-      <tr>
-        <th>Time</th>
-        <th>Temprature</th>
-        <th>Conditions</th>
+      <tr style="border-bottom:1px solid #ddd">
+        <th style="text-align:center">Time</th>
+        <th style="text-align:center">Temprature</th>
+        <th style="text-align:center">Conditions</th>
+        <th style="text-align:center">Icon</th>
       </tr>
       {% for forecast in results["hourly_forecasts"] %}
-          <tr>
-            <td>{{ forecast["timestamp"] }}</td>
-            <td>{{ forecast["temp"] }}</td>
-            <td>{{ forecast["conditions"].upper() }}</td>
+          <tr style="border-bottom:1px solid #ddd">
+            <td style="text-align:center">{{ forecast["timestamp"] }}</td>
+            <td style="text-align:center">{{ forecast["temp"] }}</td>
+            <td style="text-align:center">{{ forecast["conditions"].upper() }}</td>
+            <td style="text-align:center"><img src="{{ forecast["image_url"]}}" alt="Error"></td>
           </tr>
       {% endfor %}
     <table>

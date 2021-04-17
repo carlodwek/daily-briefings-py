@@ -5,16 +5,26 @@
 
     <h2>Weather Form</h2>
 
-    <p>Request an hourly forecast for your zip code...</p>
+    <p>Request an hourly forecast for your zip code. Requests outside the US not yet supported.</p>
 
     <form action="/weather/forecast" method="POST">
 
         <label>Country Code:</label>
         <input type="text" name="country_code" placeholder="US" value="US">
         <br>
+        <br>
 
         <label>Zip Code:</label>
         <input type="text" name="zip_code" placeholder="20057" value="20057">
+        <br>
+        <br>
+
+        <label for="unit">Temprature Unit:</label>
+        <select name="unit" id="unit">
+            <option value="F">Fahrenheit</option>
+            <option value="C">Celcius</option>
+        </select>
+        <br>
         <br>
 
         <button>Submit</button>

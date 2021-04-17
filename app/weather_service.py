@@ -28,7 +28,7 @@ def set_geography():
         user_zip = ZIP_CODE
     return user_country, user_zip
 
-def get_hourly_forecasts(country_code, zip_code):
+def get_hourly_forecasts(country_code, zip_code, unit):
     """
     Fetches hourly forecast information from the Weather.gov API, for a given country and zip code.
 
@@ -68,13 +68,13 @@ def get_hourly_forecasts(country_code, zip_code):
     for period in parsed_forecast_response["properties"]["periods"][0:24]:
         hourly_forecasts.append({
             "timestamp": format_hour(period["startTime"]),
-            "temp": format_temp(period["temperature"], period["temperatureUnit"]),
+            "temp": format_temp(period["temperature"], period["temperatureUnit"], unit),
             "conditions": period["shortForecast"],
             "image_url": period["icon"]
     })
     return {"city_name": city_name, "hourly_forecasts": hourly_forecasts}
 
-def format_temp(temp, temp_unit="F"):
+def format_temp(temp, temp_unit, unit):
     """
     Displays a temperature to the nearest whole degree, with its temp unit a degrees symbol
 
@@ -82,7 +82,14 @@ def format_temp(temp, temp_unit="F"):
         temp (float or int) temperature
         temp_unit (str) "F" or "C"
     """
-    return f"{round(temp)} {DEGREE_SIGN}{temp_unit}"
+    if unit == 'C':
+        if temp_unit == 'F':
+            temp = (temp-32)*(5/9)
+    elif unit == 'F':
+        if temp_unit == 'C':
+            temp = (temp*(9/5))+32
+
+    return f"{round(temp)} {DEGREE_SIGN}{unit}"
 
 def format_hour(dt_str):
     """

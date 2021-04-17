@@ -12,6 +12,7 @@ def weather_forecast_api():
 
     country_code = request.args.get("country_code") or "US"
     zip_code = request.args.get("zip_code") or "20057"
+    zip_code = request.args.get("unit") or "F"
 
     results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
     if results:
@@ -37,11 +38,12 @@ def weather_forecast():
 
     country_code = request_data.get("country_code") or "US"
     zip_code = request_data.get("zip_code") or "20057"
+    unit = request_data.get("unit") or "F"
 
-    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
+    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code, unit=unit)
     if results:
         flash(f"Weather Forecast Generated Successfully!", "success")
-        return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, results=results)
+        return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, unit=unit, results=results)
     else:
         flash(f"Geography Error. Please try again!", "danger")
         return redirect("/weather/form")

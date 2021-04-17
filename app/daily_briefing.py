@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     # FETCH DATA
 
-    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip)
+    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip, unit=C)
     if not result:
         print("INVALID GEOGRAPHY. PLEASE CHECK YOUR INPUTS AND TRY AGAIN!")
         exit()

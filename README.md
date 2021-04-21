@@ -42,6 +42,7 @@ SENDER_EMAIL_ADDRESS="_______________"
 #APP_ENV="development"
 #COUNTRY_CODE="US"
 #ZIP_CODE="10017"
+#UNIT="F"
 #USER_NAME="Jon Snow"
 ```
 
@@ -53,7 +54,7 @@ Printing today's weather forecast (to test the Weather.gov API):
 python -m app.weather_service
 
 # in production mode:
-APP_ENV="production" COUNTRY_CODE="US" ZIP_CODE="20057" python -m app.weather_service
+APP_ENV="production" COUNTRY_CODE="US" ZIP_CODE="20057" UNIT="F" python -m app.weather_service
 ```
 
 Sending an example email (to test the SendGrid service):
@@ -70,7 +71,7 @@ Sending the weather forecast in an email:
 python -m app.daily_briefing
 
 # in production mode:
-APP_ENV="production" COUNTRY_CODE="US" ZIP_CODE="20057" python -m app.daily_briefing
+APP_ENV="production" COUNTRY_CODE="US" ZIP_CODE="20057" UNIT="F" python -m app.daily_briefing
 ```
 
 

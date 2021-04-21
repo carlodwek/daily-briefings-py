@@ -16,6 +16,7 @@ load_dotenv()
 
 COUNTRY_CODE = os.getenv("COUNTRY_CODE", default="US")
 ZIP_CODE = os.getenv("ZIP_CODE", default="20057")
+UNIT = os.getenv("UNIT", default="F")
 
 DEGREE_SIGN = u"\N{DEGREE SIGN}"
 
@@ -27,7 +28,7 @@ def set_geography():
     else:
         user_country = COUNTRY_CODE
         user_zip = ZIP_CODE
-        unit = "F"
+        unit = UNIT
     return user_country, user_zip, unit
 
 def get_hourly_forecasts(country_code, zip_code, unit):
@@ -112,7 +113,7 @@ if __name__ == "__main__":
 
     # CAPTURE INPUTS
 
-    user_country, user_zip = set_geography()
+    user_country, user_zip, unit = set_geography()
     print("COUNTRY:", user_country)
     print("ZIP CODE:", user_zip)
     print("UNIT:", unit)

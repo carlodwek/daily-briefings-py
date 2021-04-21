@@ -19,13 +19,14 @@ if __name__ == "__main__":
 
     # CAPTURE INPUTS
 
-    user_country, user_zip = set_geography()
+    user_country, user_zip, unit = set_geography()
     print("COUNTRY:", user_country)
     print("ZIP CODE:", user_zip)
+    print("UNIT:", unit)
 
     # FETCH DATA
 
-    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip, unit=C)
+    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip, unit=unit)
     if not result:
         print("INVALID GEOGRAPHY. PLEASE CHECK YOUR INPUTS AND TRY AGAIN!")
         exit()

@@ -12,9 +12,9 @@ def weather_forecast_api():
 
     country_code = request.args.get("country_code") or "US"
     zip_code = request.args.get("zip_code") or "20057"
-    zip_code = request.args.get("unit") or "F"
+    unit = request.args.get("unit") or "F"
 
-    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
+    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code, unit=unit)
     if results:
         return jsonify(results)
     else:

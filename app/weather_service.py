@@ -23,10 +23,12 @@ def set_geography():
     if APP_ENV == "development":
         user_country = input("PLEASE INPUT A COUNTRY CODE (e.g. 'US'): ")
         user_zip = input("PLEASE INPUT A ZIP CODE (e.g. 20057): ")
+        unit = input("PLEASE INPUT A UNIT (e.g. F): ")
     else:
         user_country = COUNTRY_CODE
         user_zip = ZIP_CODE
-    return user_country, user_zip
+        unit = "F"
+    return user_country, user_zip, unit
 
 def get_hourly_forecasts(country_code, zip_code, unit):
     """
@@ -113,10 +115,11 @@ if __name__ == "__main__":
     user_country, user_zip = set_geography()
     print("COUNTRY:", user_country)
     print("ZIP CODE:", user_zip)
+    print("UNIT:", unit)
 
     # FETCH DATA
 
-    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip)
+    result = get_hourly_forecasts(country_code=user_country, zip_code=user_zip, unit=unit)
     if not result:
         print("INVALID GEOGRAPHY. PLEASE CHECK YOUR INPUTS AND TRY AGAIN!")
         exit()

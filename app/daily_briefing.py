@@ -34,17 +34,28 @@ if __name__ == "__main__":
     # DISPLAY OUTPUTS
 
     todays_date = date.today().strftime('%A, %B %d, %Y')
-
-    html = ""
+    html = "<html>"
     html += f"<h3>Good Morning, {USER_NAME}!</h3>"
-
     html += "<h4>Today's Date</h4>"
     html += f"<p>{todays_date}</p>"
-
-    html += f"<h4>Weather Forecast for {result['city_name']}</h4>"
-    html += "<ul>"
+    html += f'<h2>Weather Forecast for {result["city_name"]}</h2>'
+    html+= f'<p>Zip Code: {user_zip}</p>'
+    html+= '<table style="width:100%">'
+    html+= '<tr style="border-bottom:1px solid #ddd">'
+    html+= '<th style="text-align:center">Time</th>'
+    html+= '<th style="text-align:center">Temprature</th>'
+    html+= '<th style="text-align:center">Conditions</th>'
+    html+= '<th style="text-align:center">Icon</th>'
+    html+= '</tr>'
     for forecast in result["hourly_forecasts"]:
-        html += f"<li>{forecast['timestamp']} | {forecast['temp']} | {forecast['conditions'].upper()}</li>"
-    html += "</ul>"
+        html+= '<tr style="border-bottom:1px solid #ddd">'
+        html+= f'<td style="text-align:center">{ forecast["timestamp"] }</td>'
+        html+= f'<td style="text-align:center">{ forecast["temp"] }</td>'
+        html+= f'<td style="text-align:center">{ forecast["conditions"].upper() }</td>'
+        html+= f'<td style="text-align:center"><img src="{ forecast["image_url"]}" alt="Error"></td>'
+        html+= '</tr>'
+
+    html+= '</table>'
+    html += "</html>"
 
     send_email(subject="[Daily Briefing] My Morning Report", html=html)
